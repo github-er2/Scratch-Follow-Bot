@@ -1,18 +1,14 @@
-while{} True:
-  import os
-
-  os.system('pip install scratchconnect')
-
+import os
+os.system('pip install scratchconnect')
+while True:
   import scratchconnect
 
-  login = scratchconnect.ScratchConnect('thebesttestoutthere', ' =D')
+  login = scratchconnect.ScratchConnect('Username', 'Password')
+  user = login.connect_user(username="ANYUSER")
 
-  project = login.connect_project(project_id=603845519,
-                              access_unshared=False)
+  latestcomment = str(user.comments(limit=1, page=1))
 
-  latestcomment = str(project.comments(all=False, limit=1, offset=0, comment_id=None))
-
-  partitioned_string = latestcomment.partition("'username': '")
+  partitioned_string = latestcomment.partition("'User': '")
   partone = partitioned_string[2]
   parttwo = partone.partition("',")
   commenter = parttwo[0]
