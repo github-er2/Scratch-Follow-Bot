@@ -7,7 +7,7 @@ while True:
   user = login.connect_user(username="ANYUSER")
 
   latestcomment = str(user.comments(limit=1, page=1))
-  commenter = latestcomment["USER"]
+  commenter = latestcomment["User"]
   
   print(commenter)
   login.follow_user(username=str(commenter))
